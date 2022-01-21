@@ -1,6 +1,3 @@
-[requires]
-python_version="3.9"
-
 [packages]
 fusesoc="*"
 wal-lang="*"

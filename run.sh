@@ -14,4 +14,3 @@ for i in $(find $WORKSPACE/riscv-compliance/work/rv32i/ -name '*.hex'); do
 done
 
 cd eval && pipenv run ./eval-compliance.sh && cd ..
-cat serv-cpi.txt

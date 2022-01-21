@@ -6,7 +6,8 @@ The lifecycle of an instruction in SERV starts when the i_ibus_ack signal rises 
 
 <img align="left" src="https://svg.wavedrom.com/{signal%3A [%0A%20%20%20 { name%3A 'clk'%2C%0A%09%09wave%3A 'p............'}%2C%0A%09{ name%3A 'i_ibus_ack'%2C%0A%09%09wave%3A '0..10..|..10.'%2C%0A%20%20%20%20%20%20%20 node%3A '...a......b'%2C%0A%09%09data%3A '9 9 6 6 9 9 6 6 9 9 '}%2C%0A%20 %09{ name%3A 'i_ibus_rdt'%2C%0A%09%09wave%3A '0..30..|..30.'%2C%0A%09%09data%3A 'inst1 inst2'}%2C%0A%20 %0A]%2C%0A%20 edge%3A ['a~b CPI']%2C%0A%20 config%3A {%0A%20 %09hscale%3A 2%0A%20 }%2C%0Ahead%3A{%0A%20%20%20%20%20%20 tick%3A0%2C%0A%20%20%20%20%20%20 every%3A2%2C%0A}}%0A"/>
 
-<br>
+<br/>
+
 ## Prerequisites
 To run the analysis you must have a rv32i toolchain and verilator on you path. Additionally you need a Python installation with version < 3.10 and the `pipenv` package installed.
 

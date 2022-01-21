@@ -1,0 +1,28 @@
+BEGIN: {
+    // import python file for access to riscvmodel lib
+    import(extern);
+    cpis = [];
+    // create some aliases for shorter signal names
+    alias(clk, TOP.servant_sim.dut.cpu.clk);
+    alias(fire, TOP.servant_sim.dut.cpu.i_ibus_ack);
+    alias(instruction, TOP.servant_sim.dut.cpu.i_ibus_rdt);
+}
+
+// an instruction is commited if we detect a rising edge on the fire signal at the next clk
+// only store instruction CPI if opcode matches program argument
+!fire, fire@2, op == args[0]: {
+    // calculate CPI and append to list
+    // must be divided by two since we count both positive and negative clk edges
+    cpis = cpis + ((INDEX - start) / 2);
+}
+
+// whenever an instruction starts to execute store current time and opcode
+clk, fire: { 
+    start = INDEX;
+    op = call(extern.decode, instruction);
+}
+
+// finally print meassured data, if the trace contained the searched op
+END: {
+    if (cpis) printf("%10s %10d %10d %10d\n", args[0], average(cpis), min(cpis), max(cpis));
+}

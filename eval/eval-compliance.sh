@@ -12,7 +12,7 @@ SLL SLLI SRA SRAI SRL SRLI"
 for op in $single_ops; do
     wawk inst.wawk traces/I-$op-01.elf.vcd ${op,,} | tee -a ../serv-cpi.txt
 done
-exit
+
 branch_ops="JAL JALR BEQ BGE BGEU BLT BLTU BNE"
 for op in $branch_ops; do
     wawk inst.wawk traces/I-MISALIGN_JMP-01.elf.vcd ${op,,} | tee -a ../serv-cpi.txt

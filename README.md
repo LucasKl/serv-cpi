@@ -11,7 +11,7 @@ To run the analysis you must have a rv32i toolchain and verilator on you path. A
 
 First, check out the `serv-cpi` repository.
 ```
-git clone git@github.com:LucasKl/serv-cpi.git
+git clone https://github.com/LucasKl/serv-cpi.git
 cd serv-cpi
 ```
 

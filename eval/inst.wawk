@@ -10,7 +10,7 @@ BEGIN: {
 
 // an instruction is commited if we detect a rising edge on the fire signal at the next clk
 // only store instruction CPI if opcode matches program argument
-!fire, fire@2, op == args[0]: {
+clk, !fire, fire@2, op == args[0]: {
     // calculate CPI and append to list
     // must be divided by two since we count both positive and negative clk edges
     cpis = cpis + ((INDEX - start) / 2);
@@ -24,5 +24,11 @@ clk, fire: {
 
 // finally print meassured data, if the trace contained the searched op
 END: {
-    if (cpis) printf("%10s %10d %10d %10d\n", args[0], average(cpis), min(cpis), max(cpis));
+    if (cpis) {
+	if (min(cpis) == max(cpis)) {
+	    printf("%10s %10d\n", args[0], average(cpis));
+	} else {
+	    printf("%10s %10d %10d %10d\n", args[0], average(cpis), min(cpis), max(cpis));
+	};
+    };
 }

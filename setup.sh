@@ -10,7 +10,7 @@ pipenv install
 if [ ! -d "fusesoc_libraries" ] 
 then
 pipenv run fusesoc library add fusesoc_cores https://github.com/fusesoc/fusesoc-cores
-pipenv run fusesoc library add serv https://github.com/olofk/serv
+pipenv run fusesoc library add serv https://github.com/olofk/serv --sync-version 1.1.0
 fi
 
 if ! command -v verilator &> /dev/null
